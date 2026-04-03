@@ -88,7 +88,17 @@ class Bank:
                 print(f"Your total balance is {userdata[0]['balance']}")
 
                 Bank.__update()
-                
+    def showdetails(self):
+        accnumber = input("Enter your account number : ")
+        pin = int(input("Plz Tell ur pin as well"))
+
+        userdata = [i for i in Bank.data if i['account No.'] == accnumber and i['pin'] == pin]
+
+        if userdata == []:
+            print("Sorry no data found")
+        else:
+            for i in userdata[0]:
+                print(f"{i} : {userdata[0][i]}")       
            
 
 user=Bank()
@@ -110,3 +120,5 @@ if check == 2:
 if check == 3:
     user.withdrawmoney()
 
+if check == 4:
+    user.showdetails()
