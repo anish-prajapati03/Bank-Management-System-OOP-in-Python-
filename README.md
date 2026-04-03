@@ -1,4 +1,5 @@
 # 🏦 AnixBank — Digital Bank Management System
+🔗 Live Demo: https://anixbank.streamlit.app/
 
 A simple yet fully functional bank management system built with **Python** and **Streamlit**, featuring a clean web-based UI.
 
