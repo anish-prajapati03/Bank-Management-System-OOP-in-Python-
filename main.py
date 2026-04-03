@@ -99,7 +99,68 @@ class Bank:
         else:
             for i in userdata[0]:
                 print(f"{i} : {userdata[0][i]}")       
-           
+
+    def updatedetails(self): 
+        accnumber = input("Enter your account number : ")
+        pin = int(input("Plz Tell ur pin as well"))
+
+        userdata = [i for i in Bank.data if i['account No.'] == accnumber and i['pin'] == pin]
+
+        if userdata == []:
+            print("Sorry no data found")
+
+        else:
+            print("You can't change the age, account no. , Balance")
+
+            print("Fill the details for Change or leave it empty if no change")
+
+            newdata = {
+                "name": input("Tell your name: ") ,
+                "email": input("Tell your email: "), 
+                "pin": (input("Tell your pin: ")) 
+            }
+            if newdata["name"]=="":
+                newdata["name"] = userdata[0]["name"]
+            if newdata["email"]=="":
+                newdata["email"] = userdata[0]["email"]
+            if newdata["pin"]=="":
+                newdata["pin"] = userdata[0]["pin"]
+            
+            newdata['age'] = userdata[0]['age']
+            newdata['account No.'] = userdata[0]['account No.']
+            newdata['balance'] = userdata[0]['balance']
+
+            if type(newdata["pin"]) == str:
+                newdata["pin"] = int(newdata["pin"])
+
+            for i in newdata:
+                if newdata[i] == userdata[0][i]:
+                    continue
+                else:
+                    userdata[0][i] = newdata[i]
+
+            Bank.__update()
+            print("Details updated successfully")
+        
+        def Delete(self):
+            accnumber = input("Enter your account number : ")
+            pin = int(input("Plz Tell ur pin as well"))
+
+            userdata = [i for i in Bank.data if i['account No.'] == accnumber and i['pin'] == pin]
+
+            if userdata == []:
+                print("Sorry no data found")
+            else:
+                check= input("Press y if you actually want to delete the account or press n for not")
+                if check == "n" or "N":
+                    print("Ok we will not delete your account")
+                else:
+                    Bank.data.remove(userdata[0])
+                    print("Account deleted successfully")
+                    Bank.__update()
+
+
+                
 
 user=Bank()
 print("Press 1 forcreating an account")
@@ -122,3 +183,10 @@ if check == 3:
 
 if check == 4:
     user.showdetails()
+
+if check == 5:
+    user.updatedetails()
+
+if check == 6:
+    user.Delete()
+   
