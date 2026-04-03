@@ -112,3 +112,7 @@ To stop the app press `Ctrl + C` in the terminal.
 ## 👨‍💻 Author
 
 Built as an OOP learning project — improved with Streamlit for a better user experience.
+
+⭐ Support
+
+If you like this project, please ⭐ the repository!
